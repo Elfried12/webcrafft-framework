@@ -32,9 +32,9 @@ function CatalogSection(props) {
       return <p className="text-center text-muted py-4">Aucun résultat pour ces critères.</p>;
     }
     return (
-      <div className="row g-4">
+      <div className="card-grid">
         {results.map((item) => (
-          <div className="col-12 col-sm-6 col-lg-4" key={item.id}>
+          <div key={item.id}>
             {renderCard(item, handleSelect)}
           </div>
         ))}
@@ -43,7 +43,7 @@ function CatalogSection(props) {
   };
 
   return (
-    <section id={id} className="container py-5">
+    <section id={id} className="container-fluid page-container py-5">
       <h2 className="fw-bold">{title}</h2>
       {subtitle && <p className="text-muted">{subtitle}</p>}
 

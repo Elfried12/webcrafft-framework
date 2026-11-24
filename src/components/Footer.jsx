@@ -7,7 +7,7 @@ function Footer() {
 
   return (
     <footer className="bg-dark text-light py-4 mt-5">
-      <div className="container d-flex flex-column flex-md-row justify-content-between gap-3">
+      <div className="container-fluid page-container d-flex flex-column flex-md-row justify-content-between gap-3">
         <p className="mb-0">
           © {currentYear} {APP_NAME} — Tous droits réservés
         </p>

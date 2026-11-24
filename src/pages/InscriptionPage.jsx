@@ -15,7 +15,7 @@ function InscriptionPage() {
   const { data, isLoading, error, refetch } = useFetch(API_URLS.courses);
 
   return (
-    <section className="container py-5" style={{ maxWidth: 720 }}>
+    <section className="container-fluid page-container page-narrow py-5">
       <h1 className="fw-bold mb-2">Inscription à une formation</h1>
       <p className="text-muted mb-4">Les champs marqués * sont obligatoires.</p>
 

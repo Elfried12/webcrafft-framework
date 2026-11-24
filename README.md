@@ -1,12 +1,3 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
 # Portail WebCraft Solutions — React
 
 Migration du portail E1 (projets + formations) vers une application React componentisée.
@@ -38,3 +29,49 @@ npm run lint     # vérification ESLint
 | `*` | `NotFoundPage` | Page 404 |
 
 ## Architecture
+
+```
+src/
+├── App.jsx / App.css        # Router + structure commune, styles globaux
+├── main.jsx                 # Point d'entrée, import du CSS Bootstrap
+├── config/constants.js      # URL des API, liens de navigation, champs de recherche
+├── pages/                   # Une page = une route
+├── components/              # Composants UI réutilisables (< 150 lignes chacun)
+├── hooks/
+│   ├── useFetch.jsx         # Chargement d'API (loading / error / data / refetch)
+│   └── useSearch.jsx        # Recherche texte + filtres combinés
+└── utils/
+    ├── validation.js        # Règles de validation du formulaire (JSDoc)
+    └── format.js            # Formatage prix, options de filtres
+```
+
+### Principe anti-duplication
+
+`CatalogSection` contient toute la logique commune aux deux sections
+(SearchBar + FilterBar + grille + Modal + états loading/erreur).
+`ProjectsSection` et `CoursesSection` ne font que :
+
+1. charger leur API avec `useFetch` ;
+2. décrire leurs filtres (issus de l'API : `categories`, `levels`, `technologies`) ;
+3. indiquer quelle carte (`ProjectCard` / `CourseCard`) et quel détail
+   (`ProjectDetails` / `CourseDetails`) afficher.
+
+### Séparation des responsabilités
+
+- **Données** : `useFetch` (réseau) et `useSearch` (filtrage) — aucun `fetch` dans les composants UI.
+- **Logique métier** : `utils/validation.js` — fonctions pures, testables sans React.
+- **Configuration** : `config/constants.js` — aucune URL en dur dans les composants.
+- **Affichage** : `components/` — composants à responsabilité unique, props typées avec PropTypes.
+
+### Gestion d'erreur API
+
+Si une API ne répond pas, `useFetch` renvoie un message d'erreur et
+`ErrorMessage` l'affiche avec un bouton **Réessayer** (`refetch`).
+
+### Responsive pleine largeur
+
+- `.page-container` : le contenu occupe toute la largeur de l'écran, avec des marges latérales
+  proportionnelles (`clamp(1rem, 4vw, 4rem)`) et une limite à 1920 px pour les très grands écrans.
+- `.card-grid` : grille CSS `auto-fill` ; le nombre de colonnes s'adapte seul
+  (1 sur mobile, jusqu'à 5-6 sur grand écran) sans media queries.
+- `index.css` : reset de base (remplace le CSS par défaut de Vite qui centrait la page).

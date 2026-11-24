@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 function Hero() {
   return (
     <section className="hero text-white text-center d-flex align-items-center">
-      <div className="container">
+      <div className="container-fluid page-container">
         <h1 className="hero-title display-4 fw-bold">
           Nous créons le web <span className="hero-highlight">de demain</span>
         </h1>

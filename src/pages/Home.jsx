@@ -8,7 +8,7 @@ function Home() {
     <>
       <Hero />
       <ProjectsSection />
-      <hr className="container" />
+      <hr className="container-fluid page-container" />
       <CoursesSection />
     </>
   );

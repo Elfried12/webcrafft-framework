@@ -13,7 +13,7 @@ function FilterBar({ filters, values, onFilterChange, onReset }) {
       {filters.map(({ name, label, options }) => (
         <select
           key={name}
-          className="form-select w-auto"
+          className="form-select"
           aria-label={label}
           value={values[name] ?? ALL}
           onChange={(event) => onFilterChange(name, event.target.value)}

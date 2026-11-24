@@ -16,7 +16,7 @@ function Header() {
   return (
     <header className="sticky-top">
       <nav className="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
-        <div className="container">
+        <div className="container-fluid page-container">
           <Link className="navbar-brand fw-bold" to="/" onClick={closeMenu}>
             &lt;/&gt; {APP_NAME}
           </Link>
