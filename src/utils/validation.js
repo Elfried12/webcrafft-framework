@@ -1,6 +1,5 @@
 /**
  * Fonctions de validation du formulaire d'inscription.
- * Logique pure (sans React) : facile à tester et à réutiliser.
  */
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;

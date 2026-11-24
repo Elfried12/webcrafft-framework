@@ -75,3 +75,12 @@ Si une API ne répond pas, `useFetch` renvoie un message d'erreur et
 - `.card-grid` : grille CSS `auto-fill` ; le nombre de colonnes s'adapte seul
   (1 sur mobile, jusqu'à 5-6 sur grand écran) sans media queries.
 - `index.css` : reset de base (remplace le CSS par défaut de Vite qui centrait la page).
+
+## Utilisation de l'intelligence artificielle
+
+Conformément aux règles de transparence, voici les parties réalisées avec l'aide d'une IA :
+
+- **`src/utils/validation.js`** : les constantes de validation (expressions régulières
+  `EMAIL_REGEX`, `PHONE_REGEX` et `NAME_REGEX`) ont été écrites avec l'aide de l'IA.
+- **Logo** (`public/logo.svg`, composant `src/components/Logo.jsx`) : le dessin du logo
+  et son animation au survol (règles `.logo` dans `src/App.css`) ont été réalisés avec l'aide de l'IA.

@@ -1,15 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 
 /**
- * Hook personnalisé pour charger des données JSON depuis une API.
- *
- * Gère automatiquement les trois états d'une requête :
- *  - isLoading : la requête est en cours
- *  - error     : message d'erreur si la requête a échoué
- *  - data      : données JSON reçues
- *
- * Un AbortController annule la requête si le composant est démonté
- * avant la fin du chargement (évite les mises à jour d'état "fantômes").
  *
  * @param {string} url - URL de l'API à appeler
  * @returns {{ data: any, isLoading: boolean, error: string|null, refetch: Function }}
