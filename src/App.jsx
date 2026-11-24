@@ -1,35 +1,38 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
+import Home from './pages/Home';
+import ProjectsPage from './pages/ProjectsPage';
+import CoursesPage from './pages/CoursesPage';
+import InscriptionPage from './pages/InscriptionPage';
+import NotFoundPage from './pages/NotFoundPage';
+import './App.css';
 
+/**
+ * Composant racine : met en place le routeur et la structure commune
+ * (Header / contenu de la page / Footer).
+ */
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <BrowserRouter>
+      <ScrollToTop />
+      <div className="d-flex flex-column min-vh-100">
+        <Header />
+        <main className="flex-grow-1">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/projets" element={<ProjectsPage />} />
+            <Route path="/formations" element={<CoursesPage />} />
+            {/* Route dynamique : :courseId est optionnel */}
+            <Route path="/inscription/:courseId?" element={<InscriptionPage />} />
+            <Route path="*" element={<NotFoundPage />} />
+          </Routes>
+        </main>
+        <Footer />
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </BrowserRouter>
+  );
 }
 
-export default App
+export default App;
