@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
-import { APP_NAME, NAV_LINKS } from '../config/constants';
+import { NAV_LINKS } from '../config/constants';
+import Logo from './Logo';
 
 /**
  * En-tête du site avec navigation React Router.
@@ -18,7 +19,7 @@ function Header() {
       <nav className="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
         <div className="container-fluid page-container">
           <Link className="navbar-brand fw-bold" to="/" onClick={closeMenu}>
-            &lt;/&gt; {APP_NAME}
+            <Logo />
           </Link>
 
           <button

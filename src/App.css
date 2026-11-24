@@ -182,3 +182,17 @@ body {
     padding: 1rem;
   }
 }
+
+/* ===== Logo ===== */
+.logo img {
+  border-radius: 22%;
+  transition: transform 0.3s ease;
+}
+
+.navbar-brand:hover .logo img {
+  transform: rotate(-8deg) scale(1.08);
+}
+
+.logo-name {
+  letter-spacing: 0.3px;
+}
